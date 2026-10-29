@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Website Dạy Học Môn Lập Trình Java</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-java"></i> Java Learning Hub
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active btn-home-nav"><i class="fas fa-home"></i> Trang Chủ</a></li>
+                    <li><a href="lythuyet.html#chap1"><i class="fas fa-book"></i> Chương 1: Cơ Bản</a></li>
+                    <li><a href="lythuyet.html#chap2"><i class="fas fa-cubes"></i> Chương 2: OOP</a></li>
+                    <li><a href="lythuyet.html#chap3"><i class="fas fa-code-branch"></i> Chương 3: Nâng Cao</a></li>
+                    <li><a href="thuchanh.html"><i class="fas fa-laptop-code"></i> Thực Hành & Thi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+
+        <!-- PHẦN 2: THÔNG TIN SINH VIÊN -->
+        <div class="card profile-card">
+            <img src="images/avt.jpg" alt="Ảnh đại diện Lê Quang Long" class="profile-avatar" onerror="this.src='https://via.placeholder.com/130'">
+            <div class="profile-info">
+                <h2>Lê Quang Long</h2>
+                <p><strong>Mã Số Sinh Viên (MSSV):</strong> 231A011163</p>
+                <p><strong>Học phần:</strong> Lập Trình Java - Bài Tập 29 (Đề Thi Cuối Kỳ)</p>
+                <p><span class="badge badge-easy">Trạng thái: Đã hoàn thành hệ thống</span></p>
+            </div>
+        </div>
+
+        <!-- PHẦN 1: GIỚI THIỆU TRANG CHÍNH & HỆ THỐNG -->
+        <div class="card">
+            <h2 style="color: var(--primary); margin-bottom: 16px;">
+                <i class="fas fa-graduation-cap"></i> Giới Thiệu Hệ Thống Hỗ Trợ Dạy & Học Lập Trình Java
+            </h2>
+            <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 1.05rem;">
+                Website đáp ứng toàn diện yêu cầu đồ án cuối kỳ, tích hợp đầy đủ phân hệ Lý thuyết (phân chia 4 mức độ bài tập kèm lời giải) và phân hệ Thực hành (phân quyền Giáo viên/Sinh viên, tự động chấm điểm qua 5 bộ test chuẩn).
+            </p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px;">
+                <div style="background: #f8fafc; padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);">
+                    <h3 style="margin-bottom: 12px; color: #0284c7;"><i class="fas fa-book-open"></i> Phần Lý Thuyết & Chương Học</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px;">
+                        Bao gồm các chương học phần chi tiết, danh sách bài tập ưu tiên theo 4 mức (Dễ, Trung bình, Khó, Rất khó) kèm lời giải cụ thể.
+                    </p>
+                    <a href="lythuyet.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 8px 16px;">Xem Lý Thuyết &rarr;</a>
+                </div>
+
+                <div style="background: #f8fafc; padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);">
+                    <h3 style="margin-bottom: 12px; color: #0d9488;"><i class="fas fa-user-shield"></i> Phần Thực Hành, Kiểm Tra & Thi</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px;">
+                        Tích hợp phân quyền Giáo viên soạn đề & bộ test (lưu LocalStorage) cùng cửa sổ Kiểm tra (chọn 1 bài) và Thi (chọn 2-3 bài) chấm điểm trực tiếp.
+                    </p>
+                    <a href="thuchanh.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 8px 16px;">Vào Thực Hành &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lê Quang Long - MSSV: 231A011163. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực Hành & Thi - Website Dạy Học Môn Lập Trình Java</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-java"></i> Java Learning Hub
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="btn-home-nav"><i class="fas fa-arrow-left"></i> Về Trang Chủ</a></li>
+                    <li><a href="lythuyet.html"><i class="fas fa-book"></i> Lý Thuyết</a></li>
+                    <li><a href="thuchanh.html" class="active"><i class="fas fa-laptop-code"></i> Thực Hành & Thi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <!-- THANH PHÂN QUYỀN & ĐIỀU HƯỚNG -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+            <div class="role-bar" style="margin-bottom: 0;">
+                <button class="role-btn active" id="btn-student" onclick="switchRole('student')"><i class="fas fa-user-graduate"></i> Phân Quyền Sinh Viên</button>
+                <button class="role-btn" id="btn-teacher" onclick="switchRole('teacher')"><i class="fas fa-chalkboard-teacher"></i> Phân Quyền Giáo Viên</button>
+            </div>
+            <a href="index.html" class="btn" style="background: #e2e8f0; color: var(--text-main); font-size: 0.85rem; padding: 10px 16px;">
+                <i class="fas fa-home"></i> Quay Về Trang Chủ
+            </a>
+        </div>
+
+        <!-- GIAO DIỆN GIÁO VIÊN: TẠO BÀI TẬP & BỘ TEST -->
+        <div id="teacher-view" class="card" style="display: none;">
+            <h3 style="color: var(--primary); margin-bottom: 20px;">
+                <i class="fas fa-chalkboard-teacher"></i> Cửa Sổ Giáo Viên: Tạo Bài Tập & Bộ Test (Lưu vào LocalStorage)
+            </h3>
+            
+            <div class="form-group">
+                <label>Tên bài tập / Đề bài:</label>
+                <input type="text" id="tc-title" class="form-control" placeholder="Ví dụ: Tính tổng các số từ 1 đến N">
+            </div>
+
+            <div class="form-group">
+                <label>Mức độ bài tập:</label>
+                <select id="tc-level" class="form-control">
+                    <option value="Dễ">Dễ</option>
+                    <option value="Trung bình">Trung bình</option>
+                    <option value="Khó">Khó</option>
+                </select>
+            </div>
+
+            <label style="font-weight: 600; display: block; margin-bottom: 8px;">Cấu hình 5 bộ Test Kiểm Tra (Mỗi test đúng = 2 điểm):</label>
+            <table class="test-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Bộ Test</th>
+                        <th style="width: 42%;">Input (Đầu vào)</th>
+                        <th style="width: 43%;">Output (Đầu ra chuẩn)</th>
+                    </tr>
+                </thead>
+                <tbody id="testcase-rows">
+                    <!-- Sinh tự động bằng JS -->
+                </tbody>
+            </table>
+            <br>
+            <button class="btn btn-success" onclick="teacherSaveExercise()"><i class="fas fa-save"></i> Lưu Bài Tập Vào LocalStorage</button>
+        </div>
+
+        <!-- GIAO DIỆN SINH VIÊN: KIỂM TRA, THI & CHẤM ĐIỂM -->
+        <div id="student-view" class="card">
+            <h3 style="color: var(--primary); margin-bottom: 20px;">
+                <i class="fas fa-laptop-code"></i> Cửa Sổ Sinh Viên: Làm Bài Kiểm Tra / Thi & Chấm Điểm Trực Tiếp
+            </h3>
+
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 24px;">
+                
+                <!-- Cột trái: Thông tin & Chọn hình thức -->
+                <div style="background: #f8fafc; padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);">
+                    <div class="form-group">
+                        <label>Họ và Tên Sinh Viên:</label>
+                        <input type="text" id="sv-name" class="form-control" value="Lê Quang Long">
+                    </div>
+                    <div class="form-group">
+                        <label>Mã Số Sinh Viên (MSSV):</label>
+                        <input type="text" id="sv-id" class="form-control" value="231A011163">
+                    </div>
+                    <div class="form-group">
+                        <label>Chọn Phần Làm Bài:</label>
+                        <select id="sv-mode" class="form-control" onchange="loadStudentExercises()">
+                            <option value="check">Phần Kiểm Tra (Chọn 1 bài)</option>
+                            <option value="exam">Phần Thi (Chọn 2 đến 3 bài)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Danh Sách Bài Tập (Do Giáo Viên Giao):</label>
+                        <div id="exercise-list-container" style="max-height: 220px; overflow-y: auto; background: white; padding: 12px; border-radius: 8px; border: 1px solid var(--border);">
+                            <!-- Load qua JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột phải: Soạn thảo & Chấm điểm -->
+                <div>
+                    <div class="form-group">
+                        <label>Trạng thái lựa chọn:</label>
+                        <div id="selected-title" style="padding: 12px 16px; background: #e0e7ff; color: var(--primary); border-radius: 8px; font-weight: 600;">
+                            Vui lòng chọn bài tập ở cột bên trái.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cửa Sổ Nhập Lời Giải / Mã Nguồn Java:</label>
+                        <textarea id="student-code" class="form-control" rows="8" placeholder="Viết mã nguồn Java hoặc nhập kết quả xử lý tại đây..."></textarea>
+                    </div>
+
+                    <button class="btn btn-primary" style="width: 100%; font-size: 1.05rem;" onclick="submitAndGrade()">
+                        <i class="fas fa-paper-plane"></i> Nộp Bài & Chấm Điểm Trực Tiếp
+                    </button>
+
+                    <!-- Khung kết quả -->
+                    <div id="grade-result" style="display: none; margin-top: 20px; padding: 20px; border-radius: var(--radius); background: #f8fafc; border: 1px solid var(--border);">
+                        <h4 id="grade-score" style="margin-bottom: 12px; font-size: 1.1rem;"></h4>
+                        <div id="grade-details"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lê Quang Long - MSSV: 231A011163. All Rights Reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

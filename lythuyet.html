@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lý Thuyết - Website Dạy Học Môn Lập Trình Java</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-java"></i> Java Learning Hub
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="btn-home-nav"><i class="fas fa-arrow-left"></i> Về Trang Chủ</a></li>
+                    <li><a href="#chap1" onclick="openChap('chap1')">Chương 1</a></li>
+                    <li><a href="#chap2" onclick="openChap('chap2')">Chương 2</a></li>
+                    <li><a href="#chap3" onclick="openChap('chap3')">Chương 3</a></li>
+                    <li><a href="thuchanh.html"><i class="fas fa-laptop-code"></i> Thực Hành & Thi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                <h2 style="color: var(--primary);">
+                    <i class="fas fa-book-open"></i> Nội Dung Bài Giảng & Bài Tập Lý Thuyết (4 Mức Độ)
+                </h2>
+                <a href="index.html" class="btn" style="background: #e2e8f0; color: var(--text-main); font-size: 0.85rem; padding: 8px 14px;">
+                    <i class="fas fa-home"></i> Trang Chủ
+                </a>
+            </div>
+
+            <!-- CHƯƠNG 1 -->
+            <div class="chapter-box" id="chap1">
+                <div class="chapter-header" onclick="toggleChapter('body-chap1')">
+                    <span>Chương 1: Tổng quan về Java & Cú pháp cơ bản</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div id="body-chap1" class="chapter-body open">
+                    <p style="margin-bottom: 15px; color: var(--text-muted);">Giới thiệu cấu trúc chương trình Java, kiểu dữ liệu nguyên thủy, cấu trúc điều kiện (if-else, switch-case) và vòng lặp (for, while).</p>
+                    
+                    <h4 style="margin: 15px 0 10px; color: var(--text-main);">Danh sách bài tập (4 mức độ kèm lời giải):</h4>
+
+                    <!-- Mức 1: Dễ -->
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-easy">Mức 1: Dễ</span> <strong>Tính tổng hai số nguyên a và b.</strong>
+                        <details style="margin-top: 8px;"><summary style="color: var(--primary); cursor:pointer; font-weight: 600;">Xem Lời Giải</summary>
+<pre style="background: #0f172a; color: #f8fafc; padding: 12px; border-radius: 6px; margin-top: 6px; overflow-x: auto;">
+public class Main {
+    public static void main(String[] args) {
+        int a = 5, b = 10;
+        System.out.println("Tong: " + (a + b));
+    }
+}</pre>
+                        </details>
+                    </div>
+
+                    <!-- Mức 2: Trung bình -->
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-medium">Mức 2: Trung Bình</span> <strong>Kiểm tra số nguyên N có phải số nguyên tố.</strong>
+                        <details style="margin-top: 8px;"><summary style="color: var(--primary); cursor:pointer; font-weight: 600;">Xem Lời Giải</summary>
+<pre style="background: #0f172a; color: #f8fafc; padding: 12px; border-radius: 6px; margin-top: 6px; overflow-x: auto;">
+public class PrimeCheck {
+    public static boolean isPrime(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+}</pre>
+                        </details>
+                    </div>
+
+                    <!-- Mức 3: Khó -->
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-hard">Mức 3: Khó</span> <strong>Tìm ước chung lớn nhất (UCLN) và bội chung nhỏ nhất (BCNN).</strong>
+                    </div>
+
+                    <!-- Mức 4: Rất khó -->
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-expert">Mức 4: Rất Khó</span> <strong>Giải bài toán mã hóa Caesar cipher trên chuỗi ký tự động.</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHƯƠNG 2 -->
+            <div class="chapter-box" id="chap2">
+                <div class="chapter-header" onclick="toggleChapter('body-chap2')">
+                    <span>Chương 2: Lập trình Hướng đối tượng (OOP) trong Java</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div id="body-chap2" class="chapter-body">
+                    <p style="margin-bottom: 15px; color: var(--text-muted);">Tìm hiểu Class, Object, 4 tính chất OOP: Đóng gói, Kế thừa, Đa hình, Trừu tượng.</p>
+                    
+                    <h4 style="margin: 15px 0 10px; color: var(--text-main);">Danh sách bài tập (4 mức độ kèm lời giải):</h4>
+
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-easy">Mức 1: Dễ</span> <strong>Xây dựng lớp SinhVien gồm thuộc tính tên, điểm và phương thức in thông tin.</strong>
+                    </div>
+
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-medium">Mức 2: Trung Bình</span> <strong>Xây dựng lớp PhânSố và thực hiện phép cộng 2 phân số.</strong>
+                    </div>
+
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-hard">Mức 3: Khó</span> <strong>Quản lý danh sách nhân viên sử dụng tính kế thừa và đa hình (Nợ lương, Thưởng).</strong>
+                    </div>
+
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-expert">Mức 4: Rất Khó</span> <strong>Thiết kế hệ thống ngân hàng dùng Interface và Abstract Class quản lý tài khoản.</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHƯƠNG 3 -->
+            <div class="chapter-box" id="chap3">
+                <div class="chapter-header" onclick="toggleChapter('body-chap3')">
+                    <span>Chương 3: Xử lý ngoại lệ, Collection Framework & File I/O</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div id="body-chap3" class="chapter-body">
+                    <p style="margin-bottom: 15px; color: var(--text-muted);">Quản lý lỗi try-catch, sử dụng ArrayList, HashMap, HashSet và đọc ghi file văn bản.</p>
+                    
+                    <h4 style="margin: 15px 0 10px; color: var(--text-main);">Danh sách bài tập (4 mức độ kèm lời giải):</h4>
+
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-easy">Mức 1: Dễ</span> <strong>Xử lý ngoại lệ ArithmeticException khi chia cho 0.</strong>
+                    </div>
+
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-medium">Mức 2: Trung Bình</span> <strong>Sử dụng ArrayList để sắp xếp danh sách số nguyên tăng dần.</strong>
+                    </div>
+
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-hard">Mức 3: Khó</span> <strong>Đếm tần suất xuất hiện của từ trong file văn bản bằng HashMap.</strong>
+                    </div>
+
+                    <div style="margin-bottom: 16px; padding: 12px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border);">
+                        <span class="badge badge-expert">Mức 4: Rất Khó</span> <strong>Xây dựng ứng dụng quản lý kho hàng lưu trữ tuần tự đối tượng vào file nhị phân.</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lê Quang Long - MSSV: 231A011163. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleChapter(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('open');
+        }
+        function openChap(id) {
+            document.getElementById('body-' + id).classList.add('open');
+        }
+    </script>
+</body>
+</html>
